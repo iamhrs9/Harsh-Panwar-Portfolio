@@ -98,28 +98,3 @@ if (contactForm) { // Check karte hain ki form exist karta hai ya nahi
         });
     });
 }
-/* =========================================
-   SCROLL REVEAL ANIMATIONS
-   ========================================= */
-   
-// Animation ki setting
-ScrollReveal({ 
-    // reset: true,  // Agar bar-bar animation chahiye toh ise uncomment karo
-    distance: '80px', // Kitni door se udkar aayega
-    duration: 2000,   // Kitna time lagega (2 seconds)
-    delay: 200        // Thoda ruk kar start hoga
-});
-
-// === Koun kidhar se aayega ===
-
-// Upar se neeche (Top to Bottom)
-ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
-
-// Neeche se upar (Bottom to Top)
-ScrollReveal().reveal('.home-img, .projects-container, .contact form', { origin: 'bottom' });
-
-// Left se Right
-ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
-
-// Right se Left
-ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
