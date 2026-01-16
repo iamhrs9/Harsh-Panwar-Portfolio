@@ -1,0 +1,730 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-color: #08081b;       
+    --second-bg-color: #11102d; 
+    --text-color: #fff;
+    --main-color: #00d2ff;     
+}
+
+/* === SCROLL FIX (Most Important) === */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important; /* Zabardasti Left-Right scroll rokega */
+    background: var(--bg-color);
+    color: var(--text-color);
+    position: relative;
+}
+
+/* --- Header Design --- */
+.header {
+    position: fixed;
+    top: 1.5rem; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    padding: 0.8rem 5%; 
+    background: rgba(17, 16, 45, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 5rem;
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: top 0.4s ease;
+}
+
+.header.hidden {
+    top: -100px; 
+}
+
+.logo {
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: 600;
+    cursor: default;
+    font-family: 'Satisfy', cursive;
+    text-shadow: 0 0 2px var(--main-color); 
+}
+
+/* Desktop Menu Links */
+.navbar a {
+    font-size: 1.7rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    transition: .3s;
+    font-weight: 500;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+}
+
+/* Menu Icon (Desktop pe chupa rahega) */
+#menu-icon {
+    display: none;
+    font-size: 3.6rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* --- Home Section --- */
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+}
+
+/* === HOME SECTION (Fit One Screen - No Scroll) === */
+.home {
+    height: 100vh;      /* Screen ki poori height lega */
+    min-height: 100vh;  
+    width: 100%;
+    
+    /* Padding kam ki taaki content upar khiske */
+    padding: 0 9%;      
+    padding-top: 6rem;  /* Header ke liye bas thodi si jagah */
+    
+    display: flex;
+    justify-content: center; /* Left-Right Center */
+    align-items: center;     /* Upar-Neeche Center (Zaroori hai) */
+    
+    overflow: hidden;   /* Scrollbar ko zabardasti rokega */
+}
+
+/* Heading Size thoda balance kiya */
+.home-content h1 {
+    font-size: 5rem;    /* Pehle 5.6rem tha, thoda chhota kiya */
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem; /* Gap kam kiya */
+}
+
+.home-content h3 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem; /* Gap kam kiya */
+}
+
+.home-content p {
+    font-size: 1.6rem;
+    margin-bottom: 2rem; /* Paragraph ke neeche gap kam kiya */
+}
+
+/* Photo Adjustment (Responsive Circle) */
+.home-img img {
+    width: 30vw;       /* Width thodi kam ki (35 se 32) */
+    height: 30vw;      
+    
+    /* MAGIC LINE: Photo ko screen height se zyada bada hone se rokega */
+    max-height: 65vh;  
+    max-width: 65vh;
+    
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 25px var(--main-color);
+    border: 2px solid var(--main-color);
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+.home-img img:hover {
+    box-shadow: 0 0 50px var(--main-color), 0 0 100px var(--main-color);
+}
+
+/* Social Media Icons */
+.social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    border: .2rem solid var(--main-color);
+    border-radius: 50%;
+    font-size: 2rem;
+    color: var(--main-color);
+    margin: 3rem 1.5rem 3rem 0;
+    transition: .5s ease;
+}
+
+.social-media a:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 1rem var(--main-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--main-color);
+    border-radius: 4rem;
+    box-shadow: 0 0 1rem var(--main-color);
+    font-size: 1.6rem;
+    color: var(--bg-color);
+    letter-spacing: .1rem;
+    font-weight: 600;
+    transition: .5s ease;
+}
+
+.btn:hover {
+    box-shadow: none;
+}
+
+/* --- About Section --- */
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background: var(--second-bg-color);
+}
+
+.about-img img {
+    width: 25vw;       
+    height: 25vw;      
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: .2rem solid var(--main-color); 
+    box-shadow: 0 0 20px var(--main-color); 
+    transition: .5s ease;
+}
+
+.about-content h2 {
+    text-align: left;
+    line-height: 1.2;
+}
+
+.about-content h3 {
+    font-size: 2.6rem;
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    margin: 2rem 0 3rem;
+}
+
+/* --- Projects Section --- */
+/* === PROJECTS SECTION (One Screen Fit) === */
+.projects {
+    height: 100vh;       /* Screen ki height fix kar di */
+    width: 100%;
+    
+    /* Header se bachane ke liye padding set ki */
+    padding: 10rem 9% 2rem; 
+    
+    display: flex;
+    flex-direction: column; /* Upar se neeche items */
+    justify-content: center; /* Poore section ko Screen ke Beech mein layega */
+    align-items: center;
+    background: var(--bg-color);
+}
+
+.projects h2 {
+    margin-bottom: 2.5rem; /* Heading ka gap thoda kam kiya */
+    font-size: 4rem;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+    width: 100%;
+}
+
+/* --- Box ko Thoda Compact Banaya --- */
+.projects-box {
+    position: relative;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem var(--bg-color);
+    overflow: hidden;
+    display: flex;
+    background: #1f243d;
+    flex-direction: column;
+    align-items: center;
+    
+    /* Padding thodi kam ki taaki height kam ho */
+    padding: 2.5rem 2rem; 
+    
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    transition: .5s ease;
+}
+
+.projects-box:hover {
+    box-shadow: 0 0 2rem var(--main-color);
+    transform: translateY(-10px);
+    background: #252a48;
+}
+
+.projects-box i {
+    font-size: 4.5rem; /* Icon size thoda sa chhota kiya */
+    color: var(--main-color);
+    margin-bottom: 1rem;
+}
+
+.projects-box h3 {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.projects-box p {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #ddd;
+    
+    /* Text zyada lamba na ho */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Sirf 3 line text dikhayega */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.projects-box .btn {
+    padding: 0.8rem 2rem; /* Button thoda sleek banaya */
+    font-size: 1.4rem;
+}
+.projects h2 span {
+    color: var(--main-color);
+}
+/* --- Contact Section --- */
+.contact h2 {
+    margin-bottom: 3rem;
+    text-align: center;
+    font-size: 4rem;
+}
+
+.contact-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;  
+    margin-bottom: 3rem;
+    flex-wrap: wrap; 
+}
+
+.contact-card {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 2.5rem;
+    border-radius: 50px; 
+    width: auto; 
+    min-width: 160px; 
+    background: var(--second-bg-color);
+    border: 1px solid var(--main-color);
+    color: var(--text-color);
+    font-size: 1.6rem;
+    transition: 0.4s ease;
+    box-shadow: 0 0 5px var(--main-color);
+}
+
+.contact-card i {
+    font-size: 2.4rem;
+    color: var(--main-color);
+    transition: 0.4s ease;
+}
+
+.contact-card:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px var(--main-color);
+    transform: translateY(-5px);
+}
+
+.contact-card:hover i {
+    color: var(--bg-color);
+}
+
+.contact form {
+    max-width: 70rem;
+    margin: 1rem auto;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact form .input-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    background: var(--second-bg-color);
+    border-radius: .8rem;
+    margin: .7rem 0;
+    border: 1px solid rgba(0, 210, 255, 0.1); 
+}
+
+.contact form .input-box input {
+    width: 49%; 
+}
+
+.contact form textarea {
+    resize: none;
+}
+
+.contact form .btn {
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+
+
+/* --- FOOTER DESIGN (Desktop & Mobile) --- */
+/* DHYAN RAHE: Isse kisi bhi @media bracket ke andar mat dalna */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 9%;
+    
+    /* Neon Glow Effect */
+    background: var(--second-bg-color);
+    border-top: 2px solid var(--main-color);
+    box-shadow: 0 -5px 15px rgba(0, 210, 255, 0.15);
+    position: relative;
+    z-index: 10;
+}
+
+.footer-text p {
+    font-size: 1.6rem;
+    color: var(--text-color);
+}
+
+/* Floating Button (Up Arrow) */
+.footer-iconTop a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: var(--main-color);
+    border-radius: 50%; /* Circle */
+    transition: .5s ease;
+    box-shadow: 0 0 10px var(--main-color); 
+    
+    /* Animation: Button hawa mein hilega */
+    animation: floatArrow 2s ease-in-out infinite;
+}
+
+.footer-iconTop a:hover {
+    box-shadow: 0 0 20px var(--main-color), 0 0 40px var(--main-color);
+    transform: translateY(-5px);
+}
+
+.footer-iconTop a i {
+    font-size: 2.4rem;
+    color: var(--bg-color);
+}
+/* --- NEW FOOTER ADDITIONS --- */
+
+/* 1. Heart & Coffee Text */
+.credits {
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
+    color: #ddd;
+}
+.credits i {
+    animation: heartbeat 1.5s infinite; /* Dil dhadkega */
+}
+
+/* 2. Footer Social Icons */
+.footer-social {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.footer-social a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: transparent;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    color: var(--main-color);
+    font-size: 1.8rem;
+    transition: 0.4s ease;
+}
+
+.footer-social a:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 10px var(--main-color);
+    transform: translateY(-5px);
+}
+
+/* Dil Dhadakne ki Animation */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); } /* Bada hoga */
+    100% { transform: scale(1); }
+}
+
+/* --- MOBILE FIX (Inhein bhi center rakhne ke liye) --- */
+@media (max-width: 768px) {
+    .footer-social {
+        justify-content: center; /* Icons beech mein */
+    }
+}
+/* --- FOOTER CREDITS (Designed with Love) --- */
+.credits {
+    font-size: 1.4rem;
+    margin-top: 0.8rem;
+    color: #ddd;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* iPhone Emoji Heart Styling */
+.credits .heart {
+    display: inline-block;
+    font-size: 1.6rem; /* Emoji thoda bada dikhega */
+    animation: heartbeat 1.5s infinite; /* Dhadakne wala effect */
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); } /* Bada hoga */
+    100% { transform: scale(1); }
+}
+/* Animation Keyframes */
+@keyframes floatArrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+/* =========================================
+   MOBILE RESPONSIVENESS (FINAL & FIXED)
+   ========================================= */
+
+/* Tablet & Menu Toggle Logic (991px) */
+@media (max-width: 991px) {
+    .header {
+        width: 95%;
+        border-radius: 3rem; 
+        top: 1rem; 
+        padding: 1rem 5%;
+        background: rgba(17, 16, 45, 0.95); 
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Menu Icon Dikhao */
+    #menu-icon {
+        display: block;
+    }
+
+    /* Navbar ko Mobile Menu banao */
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 3%;
+        background: var(--bg-color);
+        border-top: .1rem solid rgba(0,0,0,.2);
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
+        display: none; 
+    }
+
+    .navbar.active {
+        display: block; 
+    }
+
+    .navbar a {
+        display: block; 
+        font-size: 2rem;
+        margin: 3rem 0;
+        text-align: center; 
+    }
+
+    section {
+        padding: 16rem 3% 2rem; /* Header ke neeche gap */
+    }
+
+    .footer {
+        padding: 2rem 3%;
+    }
+}
+
+/* Mobile Phones (768px) - Photo Blend & Layout */
+@media (max-width: 768px) {
+    
+    .home {
+        justify-content: flex-start; 
+        align-items: center;
+        text-align: left; 
+        padding-top: 10rem;
+        overflow: hidden; /* Photo bahar na nikle */
+        background: none;
+    }
+
+    .home-content {
+        z-index: 2; 
+        width: 75%; 
+        padding-left: 2rem; 
+    }
+
+    .home-content h1 {
+        font-size: 3.5rem; /* Text size control */
+    }
+
+    .home-content h3 {
+        font-size: 2rem;
+    }
+
+    /* PHOTO BLEND & CROP MAGIC */
+   /* @media (max-width: 768px) ke andar .home-img ko isse replace karo */
+
+/* Mobile View Fix - Photo ko Upar Laane ke liye */
+.home-img {
+    position: absolute;
+    
+    /* PEHLE bottom: 0 THA, AB top USE KARO */
+    top: -9rem;  /* Ye photo ko 'Harsh' text ke paas le aayega */
+    right: -7rem; /* Thoda right side shift */
+    
+    width: 100%; 
+    height: 85vh; /* Screen ka 85% height */
+    
+    z-index: 0;
+    opacity: 1;
+    
+    /* Fade Effect wahi purana wala */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%), 
+                        linear-gradient(to top, transparent 20%, black 30%);
+                        
+    mask-image: linear-gradient(to right, transparent 0%, black 30%), 
+                linear-gradient(to top, transparent 14%, black 30%);
+                
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+.home-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center; /* Chehre par focus rakhega */
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+    /* Stack Sections */
+    .about {
+        flex-direction: column-reverse; 
+    }
+
+    .about img {
+        width: 70vw;
+        height: 70vw;
+        margin-top: 4rem;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-options {
+        flex-direction: column; 
+        gap: 1.5rem;
+    }
+    
+    .contact-card {
+        width: 80%; 
+    }
+
+    /* === SOCIAL ICONS FIX (One Line) === */
+    .social-media {
+        display: flex;       /* Flexbox on karo */
+        flex-wrap: nowrap;   /* Zabardasti ek line mein rakho */
+        justify-content: flex-start; /* Left side mein rakho */
+        gap: 1.8rem;         /* Beech ka gap set karo */
+        margin: 2rem 0;      /* Upar-Neeche thoda gap */
+    }
+
+    .social-media a {
+        /* Purana margin hatao taaki woh chipke nahi aur faile nahi */
+        margin: 0 !important; 
+        
+        /* Mobile ke liye size thoda adjust kiya */
+        width: 4rem; 
+        height: 4rem;
+        font-size: 3rem;
+    }
+   /* === BUTTON CENTER FIX (Final) === */
+    .home-content .btn {
+        display: table;      /* Isse button apne aap content jitna bada hoga */
+        margin: 3.8rem; /* Left-Right Auto = CENTER */
+        
+        padding: 1rem 2rem; 
+        font-size: 1.5rem;   /* Tumhara set kiya hua size */
+        
+        /* Agar galti se float laga ho toh hata dega */
+        float: none;
+        clear: both;
+    }
+/* === FORM TEXT FIX (Fit in Box) === */
+    .contact form .input-box input,
+    .contact form textarea {
+        font-size: 1.2rem;  /* Text size 1.6rem se 1.2rem kar diya */
+        padding: 1.2rem;    /* Padding bhi thodi kam ki taaki jagah bache */
+    }
+    /* === FORM LAYOUT FIX (Full Width) === */
+    .contact form .input-box input {
+        width: 100%; /* Aaju-Baaju ki jagah Upar-Neeche aayenge */
+        margin-bottom: 1rem; /* Beech mein thoda gap */
+    }
+    /* === MOBILE FOOTER FIX (Center Align) === */
+    .footer {
+        display: flex !important;
+        flex-direction: column;  /* Ek ke neeche ek aayenge */
+        align-items: center;     /* Sab kuch Center mein */
+        justify-content: center;
+        text-align: center;      /* Text bhi center */
+        gap: 1.5rem;             /* Beech mein gap */
+        padding: 2rem 5%;
+    }
+
+    .footer-text p {
+        font-size: 1.3rem;       /* Mobile par text thoda chhota */
+        line-height: 1.6;
+    }
+
+    .footer-iconTop a {
+        margin: 0;               /* Koi extra margin nahi */
+    }
+    /* Mobile Projects Fix */
+    .projects {
+        height: auto !important; /* Mobile par height khuli chhod do */
+        padding-top: 12rem;      /* Header se doori */
+        padding-bottom: 4rem;
+    }
+}
