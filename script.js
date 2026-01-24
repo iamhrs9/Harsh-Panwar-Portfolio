@@ -2,18 +2,22 @@
 let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
-menuIcon.onclick = () => {
+const toggleMenu = () => {
     menuIcon.classList.toggle('bx-x'); // Icon badal kar 'X' ho jayega
     navbar.classList.toggle('active'); // Menu khul jayega
+    const isExpanded = navbar.classList.contains('active');
+    menuIcon.setAttribute('aria-expanded', isExpanded);
 };
 
-// Scroll karne par menu band ho jaye
-window.onscroll = () => {
-    menuIcon.classList.remove('bx-x');
-    navbar.classList.remove('active');
-    
-    // ... Neeche purana scroll code chalega ...
-};
+menuIcon.onclick = toggleMenu;
+
+// Add keyboard support for accessibility
+menuIcon.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+    }
+});
 
 
 
@@ -24,6 +28,11 @@ const header = document.querySelector('.header');
 let lastScrollY = window.scrollY;
 
 window.onscroll = () => {
+    // Scroll karne par menu band ho jaye
+    menuIcon.classList.remove('bx-x');
+    navbar.classList.remove('active');
+    menuIcon.setAttribute('aria-expanded', 'false');
+
     // Current Scroll Position
     let top = window.scrollY;
 
