@@ -8,12 +8,10 @@ menuIcon.onclick = () => {
 };
 
 // Scroll karne par menu band ho jaye
-window.onscroll = () => {
+window.addEventListener('scroll', () => {
     menuIcon.classList.remove('bx-x');
     navbar.classList.remove('active');
-    
-    // ... Neeche purana scroll code chalega ...
-};
+}, { passive: true });
 
 
 
@@ -23,7 +21,7 @@ let navLinks = document.querySelectorAll('.navbar a');
 const header = document.querySelector('.header');
 let lastScrollY = window.scrollY;
 
-window.onscroll = () => {
+window.addEventListener('scroll', () => {
     // Current Scroll Position
     let top = window.scrollY;
 
@@ -53,7 +51,7 @@ window.onscroll = () => {
         header.classList.remove('hidden'); // Scroll Up -> Show
     }
     lastScrollY = top;
-};
+}, { passive: true });
 
 // --- PART 2: Contact Form Handling (No Redirect) ---
 const contactForm = document.getElementById('contactForm');
