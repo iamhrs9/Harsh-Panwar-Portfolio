@@ -7,42 +7,65 @@ menuIcon.onclick = () => {
     navbar.classList.toggle('active'); // Menu khul jayega
 };
 
-// Scroll karne par menu band ho jaye
-window.onscroll = () => {
-    menuIcon.classList.remove('bx-x');
-    navbar.classList.remove('active');
-    
-    // ... Neeche purana scroll code chalega ...
-};
-
-
-
 // --- PART 1: Active Link & Scroll Handling ---
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('.navbar a');
 const header = document.querySelector('.header');
 let lastScrollY = window.scrollY;
 
+// Optimization: Pre-calculate nav links map to avoid querySelector in loop
+const navLinksMap = new Map();
+navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href) {
+        const id = href.substring(1); // Remove '#'
+        navLinksMap.set(id, link);
+    }
+});
+
+let currentActiveSectionId = null;
+
 window.onscroll = () => {
     // Current Scroll Position
     let top = window.scrollY;
 
-    // Active Link Logic
-    sections.forEach(sec => {
+    // --- Merged Mobile Menu Toggle Logic ---
+    // Ensure menu closes on scroll
+    if (menuIcon.classList.contains('bx-x')) {
+        menuIcon.classList.remove('bx-x');
+        navbar.classList.remove('active');
+    }
+
+    // --- Active Link Logic (Optimized) ---
+    let newActiveSectionId = null;
+
+    // Find the currently active section
+    // We use a for loop to break early once the active section is found
+    for (let i = 0; i < sections.length; i++) {
+        const sec = sections[i];
         let offset = sec.offsetTop - 150;
         let height = sec.offsetHeight;
         let id = sec.getAttribute('id');
 
         if(top >= offset && top < offset + height) {
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                let targetLink = document.querySelector('.navbar a[href*=' + id + ']');
-                if (targetLink) { // Error prevention check
-                    targetLink.classList.add('active');
-                }
-            });
+            newActiveSectionId = id;
+            break;
         }
-    });
+    }
+
+    // Only update DOM if the active section changes and a new section is actually found
+    // (This matches original behavior where no update happened if no section matched)
+    if (newActiveSectionId && newActiveSectionId !== currentActiveSectionId) {
+        // Remove active class from all links (safest approach to clean state)
+        navLinks.forEach(link => link.classList.remove('active'));
+
+        // Add active class to the new active link
+        if (navLinksMap.has(newActiveSectionId)) {
+            navLinksMap.get(newActiveSectionId).classList.add('active');
+        }
+
+        currentActiveSectionId = newActiveSectionId;
+    }
 
     // Header Hide/Show Logic
     if (top < 50) {
