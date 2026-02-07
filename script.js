@@ -23,26 +23,31 @@ let navLinks = document.querySelectorAll('.navbar a');
 const header = document.querySelector('.header');
 let lastScrollY = window.scrollY;
 
+// Intersection Observer for Active Links
+let observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navLinks.forEach(links => {
+                links.classList.remove('active');
+            });
+            let id = entry.target.getAttribute('id');
+            let targetLink = document.querySelector('.navbar a[href*=' + id + ']');
+            if (targetLink) {
+                targetLink.classList.add('active');
+            }
+        }
+    });
+}, {
+    threshold: 0.3
+});
+
+sections.forEach(sec => {
+    observer.observe(sec);
+});
+
 window.onscroll = () => {
     // Current Scroll Position
     let top = window.scrollY;
-
-    // Active Link Logic
-    sections.forEach(sec => {
-        let offset = sec.offsetTop - 150;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id');
-
-        if(top >= offset && top < offset + height) {
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                let targetLink = document.querySelector('.navbar a[href*=' + id + ']');
-                if (targetLink) { // Error prevention check
-                    targetLink.classList.add('active');
-                }
-            });
-        }
-    });
 
     // Header Hide/Show Logic
     if (top < 50) {
